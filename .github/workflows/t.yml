@@ -1,0 +1,20 @@
+---
+name: my test CI
+jobs:
+  j1:
+    runs-on: macos-latest
+    outputs:
+      output1: ${{ steps.s1.test }}
+      output2: ${{ steps.s2.test }}
+    steps:
+      - s1:
+        run: echo "::set-output name=test::this is"
+      - s2:
+        run: echo "::set-output name=test::the world"
+ j2:
+   runs-on: macos-latest
+   needs: j1
+   steps:
+     - run: echo ${{ j1.outputs.output1 }}
+
+
