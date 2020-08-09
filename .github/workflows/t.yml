@@ -15,6 +15,6 @@ jobs:
    runs-on: macos-latest
    needs: j1
    steps:
-     - run: echo ${{ j1.outputs.output1 }}
+     - run: echo ${{ j1.outputs.output1 }} ${{ j1.outputs.output2 }}
 
 
